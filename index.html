@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agam Devaki | Front-End Developer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJ8C44zW2w6VbYw2b2jM3y6lV5h5E1zWl+uQJ5qf+jM+H5m5D5g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --heading-font: "Ubuntu", sans-serif;
+            --nav-font: "Nunito", sans-serif;
+        }
+
+        :root {
+
+            --bg-light: #ffffff;
+            --accent-primary: #008080;
+            --accent-secondary: #ff9800;
+            --text-dark: #212529;
+            --section-bg: #f8f9fa;
+            --shadow-color: rgba(0, 128, 128, 0.15);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .text-accent-primary {
+            color: var(--accent-primary) !important;
+        }
+
+        .text-accent-secondary {
+            color: var(--accent-secondary) !important;
+        }
+
+        .bg-section {
+            background-color: var(--section-bg);
+            padding: 5rem 0;
+        }
+
+        .bg-img {
+            background: url('https://png.pngtree.com/thumb_back/fh260/background/20250224/pngtree-new-hd-wedding-background-wall-photo-image_16999622.jpg') center/cover no-repeat;
+            color: whitesmoke;
+            /* optional – adjust text color */
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-task {
+            background: url('https://www.shutterstock.com/image-photo/notebook-text-do-list-calculator-260nw-2630416305.jpg') center/cover no-repeat;
+            color: white;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+
+
+        /* Optional: Dark overlay for readability */
+        .bg-task::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .bg-task * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bg-work {
+            background-color: var(--accent-primary);
+        }
+
+        .skill-card {
+            background-color: var(--accent-primary);
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+
+
+
+        /* Navbar */
+        .navbar-custom {
+            background-color: var(--bg-light);
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .navbar-brand {
+            font-weight: 700 !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-primary) !important;
+        }
+
+        /* Hero */
+        .hero-section {
+            background: linear-gradient(135deg, var(--accent-primary), #004d4d);
+            color: white;
+            padding: 10rem 0 8rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero-section h1 {
+            font-weight: 900;
+        }
+
+        /* Accent Button (matches accent-secondary: Amber/Gold) */
+        .btn-accent-primary {
+            background-color: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+            color: var(--text-dark);
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-accent-primary:hover {
+            background-color: #fb8c00;
+            border-color: #fb8c00;
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.6);
+        }
+
+        /* General card setup */
+        /* Education section container */
+        #education {
+            position: relative;
+            z-index: 1;
+
+        }
+
+        /* General card setup */
+        .edu-card {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: rgb(255, 255, 255);
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        /* Base overlay (for contrast) */
+        .edu-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+
+        }
+
+        /* Colored overlay (hidden by default) */
+        .edu-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(238, 214, 237, 0.5), rgb(172, 235, 221));
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .edu-card .card-body {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hover effects */
+        .edu-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Darken the main overlay */
+        .edu-card:hover::before {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Show the color shade overlay */
+        .edu-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Click (active) effect */
+        .edu-card:active {
+            transform: scale(0.97);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+
+        /* Different background images for each card */
+        .bg-uiux {
+            background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20241124/pngtree-best-award-certificate-background-design-premium-with-blue-and-gold-lines-vector-image_16636570.jpg");
+        }
+
+        .bg-btech {
+            background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20241124/pngtree-best-award-certificate-background-design-premium-with-blue-and-gold-lines-vector-image_16636570.jpg");
+        }
+
+        .bg-inter {
+            background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20241124/pngtree-best-award-certificate-background-design-premium-with-blue-and-gold-lines-vector-image_16636570.jpg");
+        }
+
+        .bg-ssc {
+            background-image: url("https://png.pngtree.com/thumb_back/fh260/background/20241124/pngtree-best-award-certificate-background-design-premium-with-blue-and-gold-lines-vector-image_16636570.jpg");
+        }
+
+        .skill-box {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-progress {
+            background: #e0e0e0;
+            height: 14px;
+            border-radius: 50px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .skill-progress div {
+            background: var(--accent-primary);
+            height: 100%;
+            color: white;
+            text-align: right;
+            padding-right: 8px;
+            font-size: 12px;
+            border-radius: 50px;
+            line-height: 14px;
+            transition: width 0.6s ease-in-out, background 0.3s;
+        }
+
+        /* Hover color transition */
+        .skill-box:hover .skill-progress div {
+            background: black;
+        }
+        
+
+        /* Projects Card */
+        .card-project {
+            border: none;
+            border-radius: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+
+        .card-project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 128, 128, 0.3);
+        }
+
+        .card-icon {
+            background-color: var(--accent-primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+        }
+
+        .card-title {
+            color: #ffffff !important;
+        }
+
+        /* Project Footer Badges - Primary Teal */
+        .card-footer .bg-primary {
+            background-color: var(--accent-primary) !important;
+        }
+
+        /* Footer */
+        .footer-custom {
+            background-color: var(--accent-primary);
+            color: white;
+        }
+
+        .footer-custom a {
+            color: var(--accent-secondary) !important;
+            transition: color 0.3s;
+        }
+
+        .footer-custom a:hover {
+            color: #074dff !important;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="70">
+
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-accent-primary" href="#">Agam Devaki</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-me">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Stack</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#soft-skills">Soft Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="about" class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-2 fw-bolder">Agam Devaki</h1>
+            <p class="lead">I'm a UI/UX Designer, Web Developer</p>
+            <p class="lead fw-light text-uppercase mt-2">Entry-Level *React Developer* | Visakhapatnam, AP</p>
+            <h5>
+                <p>I aspire to contribute to dynamic teams in innovative environments <br> where I can continuously
+                    learn modern web technologies, implement best practices,<br> and collaborate on projects that
+                    challenge my problem-solving skills</p>
+                </h4>
+
+
+                <!-- Resume Button -->
+                <a class="btn btn-outline-light btn-lg mt-3 shadow-lg"
+                    href="file:///C:/Users/AGAM%20DEVAKI/Downloads/Agam-Devaki-FlowCV-Resume-20250926%20(2)%20(1).pdf"
+                    target="_blank" role="button">
+                    <i class="fas fa-file-alt me-2"></i> View Resume
+                </a>
+
+                <!-- Spacer / Intro before Projects -->
+                <div class="text-center my-5" id="view-work-intro">
+                    <h4 class="text-light fw-bold">Check out some of the projects I've built</h4>
+                    <p class="text-light-50">From responsive websites to interactive JavaScript applications</p>
+                </div>
+                <div class="text-center my-7" id="view-work-intro">
+
+                    <!-- View My Work button -->
+                    <a href="#projects" class="btn btn-light btn-lg mt-2">View My Work</a>
+                    <a href="#contact" class="btn btn-light btn-lg mt-2 ">Get In Touch</a>
+
+                </div>
+
+    </header>
+    <section id="about-me" class="bg-section rounded p-5 shadow-sm my-5">
+        <div class="container">
+            <h2 class="text-center mb-5 text-dark">
+                <i class="fas fa-user me-2 text-accent-primary"></i>About Me
+            </h2>
+
+            <div class="row align-items-center">
+                <!-- Left Column: Content -->
+                <div class="col-lg-8">
+                    <h3 class="fw-bold mb-3">Hi, I'm Agam Devaki</h3>
+                    <p class="mb-3">
+                        I'm a passionate **UI/UX Designer & Front-End Developer** based in Visakhapatnam, AP.
+                        I have a strong foundation in <b>HTML, CSS, JavaScript, and React.js</b> and enjoy
+                        building responsive, user-friendly websites and web applications.
+                    </p>
+                    <p class="mb-3">
+                        I am committed to writing clean, maintainable code and continuously learning
+                        modern web technologies to improve my craft. I thrive in collaborative environments
+                        and love turning ideas into functional digital experiences.
+                    </p>
+                    <a href="#contact" class="btn btn-accent-primary mt-3">Get in Touch</a>
+                </div>
+
+                <!-- Right Column: Profile Picture Card -->
+                <div class="col-md-4 mt-2 mt-lg-0">
+                    <div class="card shadow-sm border-0">
+                       <img src="images/pick.jpg.png" class="card-img-top" alt="Skill Icon">    
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold">Agam Devaki</h5>
+                            <p class="card-text text-muted">UI/UX Designer & Front-End Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="mb-5 bg-section rounded p-5 shadow-sm">
+        <h2 class="text-center mb-5 text-black">
+            <i class="fas fa-user-graduate me-2 text-white"></i>Education & Training
+        </h2>
+
+        <div class="row g-4 justify-content-center">
+
+            <!-- Professional Training -->
+            <div class="col-lg-8 col-12">
+                <div class="card edu-card bg-uiux border-0 shadow-sm h-100 text-center p-4">
+                    <div class="card-body text-black">
+                        <i class="fas fa-certificate fa-2x text-accent-primary mb-3"></i>
+                        <h5 class="fw-bold text-black mb-2">UI/UX Development</h5>
+                        <p class="text-light mb-1">Tech Mahindra SMART Academy for Digital Technologies</p>
+                        <small class="text-light d-block mb-2">Aug 2025 – Nov 2025</small>
+                        <span class="badge bg-accent-primary text-light px-3 py-2 rounded-pill">Professional
+                            Training</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- B.Tech -->
+            <div class="col-lg-8 col-12">
+                <div class="card edu-card bg-btech border-0 shadow-sm h-100 text-center p-4">
+                    <div class="card-body text-light">
+                        <i class="fas fa-graduation-cap fa-2x text-accent-primary mb-3"></i>
+                        <h5 class="fw-bold text-black mb-2">B.Tech (ECE)</h5>
+                        <p class="text-light mb-1">Welfare Institute of Science, Technology & Management</p>
+                        <small class="text-light d-block mb-2">2019 – 2023</small>
+                        <span class="badge bg-accent-primary text-light px-3 py-2 rounded-pill">Undergraduate</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intermediate -->
+            <div class=" col-lg-8 col-12">
+                <div class="card edu-card bg-inter border-0 shadow-sm h-100 text-center p-4">
+                    <div class="card-body text-light">
+                        <i class="fas fa-school fa-2x text-accent-primary mb-3"></i>
+                        <h5 class="fw-bold text-black mb-2">Intermediate (MPC)</h5>
+                        <p class="text-light mb-1">Narayana Junior College</p>
+                        <small class="text-light d-block mb-2">2017 – 2019</small>
+                        <span class="badge bg-accent-primary text-light px-3 py-2 rounded-pill">Pre-University</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SSC -->
+            <div class=" col-lg-8 col-12">
+                <div class="card edu-card bg-ssc border-0 shadow-sm h-100 text-center p-4">
+                    <div class="card-body text-light">
+                        <i class="fas fa-book fa-2x text-accent-primary mb-3"></i>
+                        <h5 class="fw-bold text-dark mb-2">Secondary School (SSC)</h5>
+                        <p class="text-light mb-1">S.V.V.P English Medium School</p>
+                        <small class="text-light d-block mb-2">2016 – 2017</small>
+                        <span class="badge bg-accent-primary text-light px-3 py-2 rounded-pill">High School</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <main class="container my-5">
+        <section id="skills" class="bg-section rounded p-5 shadow-sm mt-4">
+            <h3 class="text-center mb-4 text-dark fw-bold">
+                <i class="fas fa-code me-2 text-accent-primary"></i>Technical Skills
+            </h3>
+
+            <div class="row g-3 justify-content-center">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card text-center shadow-sm border-0 skill-card">
+                        <div class="card-body fw-semibold">HTML5</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card text-center shadow-sm border-0 skill-card">
+                        <div class="card-body fw-semibold">CSS3</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card text-center shadow-sm border-0 skill-card">
+                        <div class="card-body fw-semibold">JavaScript (ES6+)</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card text-center shadow-sm border-0 skill-card">
+                        <div class="card-body fw-semibold">React.js</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card text-center shadow-sm border-0 skill-card">
+                        <div class="card-body fw-semibold">Bootstrap</div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="card text-center shadow-sm border-0 skill-card">
+                        <div class="card-body fw-semibold">Responsive Design</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+     <main class="container my-5">
+    <section id="skills" class="bg-section rounded p-5 shadow-sm mt-4">
+        <h3 class="text-center mb-4 text-dark fw-bold">
+            <i class="fas fa-users me-2 text-accent-primary"></i>Soft Skills
+        </h3>
+
+        <div class="row g-3 justify-content-center">
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card text-center shadow-sm border-0 skill-card">
+                    <div class="card-body fw-semibold">Adaptability</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card text-center shadow-sm border-0 skill-card">
+                    <div class="card-body fw-semibold">Communication Skills</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card text-center shadow-sm border-0 skill-card">
+                    <div class="card-body fw-semibold">Problem Solving</div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card text-center shadow-sm border-0 skill-card">
+                    <div class="card-body fw-semibold">Time Management</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+
+    <section id="projects" class="mb-5 py-5">
+        <h2 class="text-center mb-5 text-dark">
+            <i class="fas fa-laptop-code me-2 text-primary"></i> Projects
+        </h2>
+
+        <!-- Project Categories Navbar -->
+
+
+        <!-- Project Cards -->
+        <div class="tab-content" id="projectTabContent">
+            <!-- All Projects -->
+            <div class="tab-pane fade show active" id="all" role="tabpanel">
+                <div class="row row-cols-1 row-cols-md-2 g-5">
+                    <!-- Project 1: HTML/CSS -->
+                    <div class="col">
+                        <div class="card h-100 card-project bg-img col-lg-10">
+                            <div class="card-header card-icon text-center">
+                                <i class="fas fa-image fa-3x"></i>
+                            </div>
+                            <div class="card-body p-6">
+                                <h5 class="card-title fw-bold">Responsive Image Grid</h5>
+                                <p class="card-text text-dark-75">
+                                    A responsive photo gallery can be built with just HTML and CSS, using as the main
+                                    container for a collection of images. To make the gallery responsive Built with HTML
+                                    & CSS Grid for responsive layouts with smooth hover effects.
+                                </p>
+                            </div>
+                            <div
+                                class="card-footer bg-light border-top-0 d-flex flex-wrap justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">HTML</span>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">CSS</span>
+                                </div>
+                                <a href="https://chandu16622.github.io/photo-gallery1/" target="_blank"
+                                    class="btn btn-sm btn-outline-dark mt-2 mt-sm-0">View Live <i
+                                        class="fas fa-external-link-alt ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: JavaScript -->
+                    <div class="col">
+                        <div class="card h-100 card-project bg-task col-lg-10">
+                            <div class="card-header card-icon text-center">
+                                <i class="fas fa-list-check fa-3x text-white"></i>
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold text-white">Vanilla JS Task Manager</h5>
+                                <p class="card-text text-light">
+                                    A foundational web application built purely with Vanilla JavaScript (ES6+),
+                                    demonstrating core CRUD (Create, Read, Update, Delete) operations. It effectively
+                                    manages tasks using the Document Object Model (DOM) API for dynamic rendering and
+                                    manipulation, and leverages local storage to persist data between sessions.
+                                </p>
+                            </div>
+                            <div
+                                class="card-footer bg-transparent border-top-0 d-flex flex-wrap justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">JavaScript</span>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">DOM</span>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">Bootstrap</span>
+                                </div>
+                                <a href="https://chandu16622.github.io/javascript/" target="_blank"
+                                    class="btn btn-sm btn-outline-light mt-2 mt-sm-0">View Live <i
+                                        class="fas fa-external-link-alt ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-6">
+                        <div class="card h-100 card-project bg-task col-lg-10">
+                            <div class="card-header card-icon text-center">
+                                <i class="fas fa-list-check fa-3x text-white"></i>
+                            </div>
+                            <div class="card-body p-6">
+                                <h5 class="card-title fw-bold text-white">Responsive calculator</h5>
+                                <p class="card-text text-light">
+                                    A fully functional, responsive calculator application developed using HTML, CSS, and
+                                    pure JavaScript. The logic handles sequential arithmetic operations and edge cases
+                                    (like division by zero) while utilizing Event Listeners for button interaction and
+                                    DOM manipulation for real-time display updates.
+                                </p>
+                            </div>
+                            <div
+                                class="card-footer bg-transparent border-top-0 d-flex flex-wrap justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">JavaScript</span>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">DOM</span>
+                                    <span class="badge rounded-pill bg-primary me-2 mb-2">Bootstrap</span>
+                                </div>
+                                <a href="https://chandu16622.github.io/calculator/" target="_blank"
+                                    class="btn btn-sm btn-outline-light mt-2 mt-sm-0">View Live <i
+                                        class="fas fa-external-link-alt ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+    </section>
+
+
+
+
+
+    <section id="interests" class="mb-5 p-4 text-center">
+        <h3 class="mb-3 text-dark"><i class="fas fa-heart me-2 text-accent-primary"></i>Interests</h3>
+        <p class="lead text-muted">🎨 Doing crafts | 🎧 Listening to music |🎨 painting /Drawing</p>
+    </section>
+
+    </main>
+
+    <footer id="contact" class="footer-custom p-5">
+        <!-- Section Title -->
+        <section id="contact" class="footer-custom p-5">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Left Column: Contact Info -->
+                    <div class="col-lg-5">
+                        <h3 class="text-light mb-4">Contact Info</h3>
+
+                        <div class="mb-3">
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            <strong>Location:</strong> Visakhapatnam, 530027
+                        </div>
+
+                        <div class="mb-3">
+                            <i class="fas fa-phone me-2"></i>
+                            <strong>Phone:</strong> 6301055724, 9553099956
+                        </div>
+
+                        <div class="mb-3">
+                            <i class="fas fa-envelope me-2"></i>
+                            <strong>Email:</strong> devchandu52@gmail.com
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Get In Touch Form -->
+                    <div class="col-lg-7">
+                        <h3 class="text-light mb-4">Get In Touch</h3>
+                        <form action="forms/contact.php" method="post" class="php-email-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email"
+                                        required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" name="subject" class="form-control" placeholder="Subject"
+                                        required>
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" rows="6" class="form-control" placeholder="Message"
+                                        required></textarea>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-dark">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <div class="container text-center">
+            <h5 class="mb-4 fw-bold text-light">Ready to start a project? Let's connect.</h5>
+            <div class="d-flex justify-content-center flex-wrap text-light">
+                <p class="mx-3 mb-2">
+                    <i class="fas fa-envelope text-accent-light me-1"></i> Email: <a href="mailto:devchandu52@gmail.com"
+                        class="text-decoration-none">devchandu52@gmail.com</a>
+                </p>
+                <p class="mx-3 mb-2">
+                    <i class="fas fa-phone text-accent-secondary me-1"></i> Phone: 06301055724
+                </p>
+                <p class="mx-3 mb-2">
+                    <i class="fas fa-map-marker-alt text-accent-secondary me-1"></i> Location: Visakhapatnam, AP
+                </p>
+            </div>
+
+            <div class="mt-3">
+                <a href="#" class="text-decoration-none mx-2 fs-4" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-decoration-none mx-2 fs-4" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+
+            <p class="mt-4 mb-0 text-muted">&copy; 2025 Agam Devaki Portfolio | Designed with Bootstrap 5</p>
+        </div> -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
